@@ -1,11 +1,12 @@
 package pl.coderslab.WorkoutPlanner.service;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.coderslab.WorkoutPlanner.entity.TrainingPlan;
 import pl.coderslab.WorkoutPlanner.entity.User;
 import pl.coderslab.WorkoutPlanner.repository.TrainingPlanRepository;
+
+import javax.transaction.Transactional;
 
 @Service
 @Transactional

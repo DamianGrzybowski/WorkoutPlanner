@@ -1,11 +1,12 @@
 package pl.coderslab.WorkoutPlanner.entity;
 
-import jakarta.persistence.*;
-import jakarta.transaction.Transactional;
-import jakarta.validation.constraints.NotBlank;
+
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.*;
+import javax.transaction.Transactional;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,11 +1,12 @@
 package pl.coderslab.WorkoutPlanner.controller;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import pl.coderslab.WorkoutPlanner.entity.User;
+
+import javax.transaction.Transactional;
 
 @Controller
 @Transactional

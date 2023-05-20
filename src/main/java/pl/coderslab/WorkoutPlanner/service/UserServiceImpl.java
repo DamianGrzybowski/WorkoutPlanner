@@ -1,6 +1,6 @@
 package pl.coderslab.WorkoutPlanner.service;
 
-import jakarta.transaction.Transactional;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -9,6 +9,7 @@ import pl.coderslab.WorkoutPlanner.entity.User;
 import pl.coderslab.WorkoutPlanner.repository.RoleRepository;
 import pl.coderslab.WorkoutPlanner.repository.UserRepository;
 
+import javax.transaction.Transactional;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -20,9 +21,10 @@ public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 
+
     @Override
-    public User findByEmail(String email) {
-        return userRepository.findByEmail(email);
+    public User findByUserName(String name) {
+        return userRepository.findByUsername(name);
     }
 
     @Override

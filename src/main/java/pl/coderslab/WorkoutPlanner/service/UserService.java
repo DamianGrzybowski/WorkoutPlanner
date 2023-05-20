@@ -3,7 +3,7 @@ package pl.coderslab.WorkoutPlanner.service;
 import pl.coderslab.WorkoutPlanner.entity.User;
 
 public interface UserService {
-    User findByEmail(String email);
+    User findByUserName(String name);
 
     User findByUserId(Long id);
 

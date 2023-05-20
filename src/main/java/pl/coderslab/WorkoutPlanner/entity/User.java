@@ -1,20 +1,25 @@
 package pl.coderslab.WorkoutPlanner.entity;
 
-import jakarta.persistence.*;
-import jakarta.transaction.Transactional;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
 
+
+import javax.persistence.*;
+import javax.transaction.Transactional;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-@Entity
 @Getter
 @Setter
+@Entity
 @Transactional
 @Table(name = "user")
 public class User {
@@ -26,16 +31,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "first_name")
+    @Column(name = "user_name")
     @NotBlank(message = NOT_EMPTY_MESSAGE)
     @Size(min = 5, max = 30, message = SIZE_MESSAGE)
-    private String firstName;
+    private String username;
 
-
-    @Column(name = "last_name")
-    @NotBlank(message = NOT_EMPTY_MESSAGE)
-    @Size(min = 5, max = 30, message = SIZE_MESSAGE)
-    private String lastName;
 
     @Email
     @Column(name = "email", unique = true)
@@ -55,4 +55,7 @@ public class User {
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+
+
+
 }

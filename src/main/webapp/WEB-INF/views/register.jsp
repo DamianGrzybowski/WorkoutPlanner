@@ -11,13 +11,9 @@
 <body>
 <form:form method="post" action="/register" modelAttribute="user">
 
-    <label for="firstName">First name</label>
-    <form:input path="firstName" id="firstName"/><br>
-    <form:errors path="firstName" cssClass="error"/><br>
-
-    <label for="lastName">Last name</label>
-    <form:input path="lastName" id="lastName"/><br>
-    <form:errors path="lastName" cssClass="error"/><br>
+    <label for="userName">User name</label>
+    <form:input path="username" id="userName"/><br>
+    <form:errors path="username" cssClass="error"/><br>
 
     <label for="email">Email</label>
     <form:input path="email" id="email" type="Email"/><br>

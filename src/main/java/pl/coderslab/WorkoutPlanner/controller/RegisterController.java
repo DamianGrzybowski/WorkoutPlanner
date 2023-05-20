@@ -1,8 +1,6 @@
 package pl.coderslab.WorkoutPlanner.controller;
 
-import jakarta.transaction.Transactional;
-import jakarta.validation.Valid;
-import lombok.Getter;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +10,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.coderslab.WorkoutPlanner.entity.User;
 import pl.coderslab.WorkoutPlanner.service.UserService;
+
+import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 @Controller
 @Transactional

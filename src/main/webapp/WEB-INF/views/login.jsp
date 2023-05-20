@@ -11,9 +11,9 @@
 <body>
 <form:form method="post" action="/login" modelAttribute="user">
 
-    <label for="email">Email</label>
-    <form:input path="email" id="email" type="Email"/><br>
-    <form:errors path="email" cssClass="error"/><br>
+    <label for="userName">User Name</label>
+    <form:input path="username" id="userName"/><br>
+    <form:errors path="username" cssClass="error"/><br>
 
     <label for="password">Password</label>
     <form:input path="password" id="password" type="Password"/><br>
