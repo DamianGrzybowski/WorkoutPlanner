@@ -6,10 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.transaction.Transactional;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,11 +29,6 @@ public class Exercise {
     @Size(min = 3, max = 50, message = SIZE_MESSAGE)
     private String name;
 
-    @Column(name = "description")
-    @NotBlank(message = NOT_EMPTY_MESSAGE)
-    @Size(min = 3, max = 255, message = LARGER_SIZE_MESSAGE)
-    private String description;
-
     @Column(name = "type")
     @NotBlank(message = NOT_EMPTY_MESSAGE)
     @Size(min = 3, max = 50, message = SIZE_MESSAGE)
@@ -44,16 +36,17 @@ public class Exercise {
 
     @Min(1)
     @Column(name = "sets")
-    @NotEmpty(message = NOT_EMPTY_MESSAGE)
+    @NotNull(message = NOT_EMPTY_MESSAGE)
     private Integer sets;
 
     @Min(1)
     @Column(name = "reps")
-    @NotEmpty(message = NOT_EMPTY_MESSAGE)
+    @NotNull(message = NOT_EMPTY_MESSAGE)
     private Integer reps;
 
-    @ManyToMany(mappedBy = "exercises")
-    private List<DayPlan> dayPlans = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
 
 }
