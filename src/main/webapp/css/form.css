@@ -52,3 +52,15 @@ label {
     text-align: center;
     margin-top: 20px;
 }
+select.input-field {
+    height: 40px;
+}
+
+
+input[type="checkbox"] {
+    margin-top: 5px;
+}
+
+label.checkbox-label {
+    margin-left: 5px;
+}

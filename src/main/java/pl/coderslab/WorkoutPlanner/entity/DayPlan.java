@@ -41,5 +41,9 @@ public class DayPlan {
     @JoinColumn(name = "training_plan_id")
     private TrainingPlan trainingPlan;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
 
 }

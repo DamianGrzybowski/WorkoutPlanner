@@ -1,4 +1,4 @@
-package pl.coderslab.WorkoutPlanner.service;
+package pl.coderslab.WorkoutPlanner.service.serviceImplementation;
 
 
 import lombok.RequiredArgsConstructor;
@@ -8,6 +8,7 @@ import pl.coderslab.WorkoutPlanner.entity.Role;
 import pl.coderslab.WorkoutPlanner.entity.User;
 import pl.coderslab.WorkoutPlanner.repository.RoleRepository;
 import pl.coderslab.WorkoutPlanner.repository.UserRepository;
+import pl.coderslab.WorkoutPlanner.service.interfaces.UserService;
 
 import javax.transaction.Transactional;
 import java.util.Arrays;

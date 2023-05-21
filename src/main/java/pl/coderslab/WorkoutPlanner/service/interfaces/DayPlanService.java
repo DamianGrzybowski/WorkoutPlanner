@@ -1,22 +1,22 @@
-package pl.coderslab.WorkoutPlanner.repository;
+package pl.coderslab.WorkoutPlanner.service.interfaces;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 import pl.coderslab.WorkoutPlanner.entity.DayPlan;
 import pl.coderslab.WorkoutPlanner.entity.TrainingPlan;
 import pl.coderslab.WorkoutPlanner.entity.User;
 
 import java.util.List;
 
-
-@Repository
-public interface DayPlanRepository extends JpaRepository<DayPlan, Long> {
-
-    DayPlan findByDay(String day);
-
+public interface DayPlanService {
     List<DayPlan> findByTrainingPlan(TrainingPlan trainingPlan);
+    DayPlan findByDay(String day);
 
     List<DayPlan> findAllByUser(User user);
 
+    List<String> allDays();
 
+    void save(DayPlan dayPlan);
+
+    void update(DayPlan dayPlan);
+
+    void delete(Long id);
 }

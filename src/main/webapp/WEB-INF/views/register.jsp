@@ -6,7 +6,9 @@
 <html>
 <head>
     <title>Register</title>
-    <link href="/css/login.css" rel="stylesheet" type="text/css">
+    <link href="/css/form.css" rel="stylesheet" type="text/css">
+    <link href="/css/button.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
 <form:form method="post" action="/register" modelAttribute="user">
@@ -27,7 +29,7 @@
     <form:input path="confirmPassword" id="confirmPassword" type="Password"/><br>
     <form:errors path="confirmPassword" cssClass="error"/><br>
 
-    <button type="submit">Register</button>
+    <button class="custom-button" type="submit">Register</button>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 

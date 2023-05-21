@@ -1,4 +1,4 @@
-package pl.coderslab.WorkoutPlanner.service;
+package pl.coderslab.WorkoutPlanner.service.interfaces;
 
 import pl.coderslab.WorkoutPlanner.entity.User;
 

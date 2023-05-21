@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.coderslab.WorkoutPlanner.entity.User;
-import pl.coderslab.WorkoutPlanner.service.UserService;
+import pl.coderslab.WorkoutPlanner.service.interfaces.UserService;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
