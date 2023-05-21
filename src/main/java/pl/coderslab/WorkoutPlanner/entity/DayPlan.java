@@ -26,29 +26,19 @@ public class DayPlan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
-    @NotEmpty(message = NOT_EMPTY_MESSAGE)
-    @Size(min = 3, max = 30, message = SIZE_MESSAGE)
-    private String name;
-
-    @Column(name = "description")
-    @NotEmpty(message = NOT_EMPTY_MESSAGE)
-    @Size(min = 3, max = 255, message = LARGER_SIZE_MESSAGE)
-    private String description;
-
     @Column(name = "day")
     @NotEmpty(message = NOT_EMPTY_MESSAGE)
     @Pattern(regexp = "(?i)^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)$",
             message = "Please enter correct day name")
     private String day;
 
-    @ManyToMany
-    @JoinTable(name = "day_plan_exercise",
-            joinColumns = @JoinColumn(name = "day_plan_id"),
-            inverseJoinColumns = @JoinColumn(name = "exercise_id"))
-    private List<Exercise> exercises = new ArrayList<>();
+    @OneToMany
+    @JoinColumn(name = "day_plan_id")
+    private List<Exercise> exercises;
+
 
     @ManyToOne
+    @JoinColumn(name = "training_plan_id")
     private TrainingPlan trainingPlan;
 
 

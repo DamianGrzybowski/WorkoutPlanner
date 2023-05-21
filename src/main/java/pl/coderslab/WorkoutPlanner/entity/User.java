@@ -1,10 +1,8 @@
 package pl.coderslab.WorkoutPlanner.entity;
 
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
 
 
 import javax.persistence.*;
@@ -13,7 +11,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 

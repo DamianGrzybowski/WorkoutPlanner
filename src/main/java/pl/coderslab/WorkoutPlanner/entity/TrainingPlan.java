@@ -30,7 +30,8 @@ public class TrainingPlan {
     @ManyToOne
     private User user;
 
-    @OneToMany(mappedBy = "trainingPlan")
+    @OneToMany
+    @JoinColumn(name = "training_plan_id")
     private List<DayPlan> dayPlans = new ArrayList<>();
 
 
