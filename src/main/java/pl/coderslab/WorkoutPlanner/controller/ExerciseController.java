@@ -5,14 +5,10 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.WorkoutPlanner.entity.CurrentUser;
 import pl.coderslab.WorkoutPlanner.entity.Exercise;
-import pl.coderslab.WorkoutPlanner.entity.User;
-import pl.coderslab.WorkoutPlanner.service.ExerciseServis;
+import pl.coderslab.WorkoutPlanner.service.interfaces.ExerciseServis;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -49,5 +45,29 @@ public class ExerciseController {
         model.addAttribute("exercises", list);
         return "exercises-all";
     }
+
+    @GetMapping("exercise/update")
+    public String update(@RequestParam("id") Long id, Model model) {
+        Exercise exerciseToUpdate = exerciseServis.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid exercise id: " + id));
+        model.addAttribute("exerciseToUpdate", exerciseToUpdate);
+        return "exercise-update-form";
+    }
+
+    @PostMapping("exercise/update")
+    public String update(@ModelAttribute("exerciseToUpdate") @Valid Exercise exercise, BindingResult result, @AuthenticationPrincipal CurrentUser user) {
+        if (result.hasErrors()) {
+            return "exercise-update-form";
+        }
+        exercise.setUser(user.getUser());
+        exerciseServis.update(exercise);
+        return "redirect:/home/exercises";
+    }
+
+    @GetMapping("/exercise/delete")
+    public String delete(@RequestParam("id") Long id) {
+        exerciseServis.delete(id);
+        return "redirect:/home/exercises";
+    }
+
 
 }

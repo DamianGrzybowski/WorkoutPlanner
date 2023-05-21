@@ -6,7 +6,9 @@
 <html>
 <head>
     <title>Login</title>
-    <link href="/css/login.css" rel="stylesheet" type="text/css">
+    <link href="/css/form.css" rel="stylesheet" type="text/css">
+    <link href="/css/button.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
 <form:form method="post" action="/login" modelAttribute="user">
@@ -19,7 +21,7 @@
     <form:input path="password" id="password" type="Password"/><br>
     <form:errors path="password" cssClass="error"/><br>
 
-    <button type="submit">Sign in</button>
+    <button class="custom-button" type="submit">Sign in</button>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
     <br>

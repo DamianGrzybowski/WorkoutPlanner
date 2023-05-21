@@ -1,8 +1,9 @@
-package pl.coderslab.WorkoutPlanner.service;
+package pl.coderslab.WorkoutPlanner.service.interfaces;
 
 import pl.coderslab.WorkoutPlanner.entity.Exercise;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ExerciseServis {
     Exercise findByName(String name);
@@ -10,6 +11,7 @@ public interface ExerciseServis {
     Exercise findByType(String type);
 
     Exercise findByUserId(Long id);
+    Optional<Exercise> findById(Long id);
 
     void save(Exercise exercise);
 
@@ -18,4 +20,6 @@ public interface ExerciseServis {
     void delete(Long id);
 
     List<Exercise> findAllByUserId(Long id);
+
+    List<Exercise> findAll();
 }

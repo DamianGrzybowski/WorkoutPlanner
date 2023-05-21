@@ -6,17 +6,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.WorkoutPlanner.entity.CurrentUser;
-import pl.coderslab.WorkoutPlanner.entity.DayPlan;
-import pl.coderslab.WorkoutPlanner.entity.TrainingPlan;
 import pl.coderslab.WorkoutPlanner.entity.User;
-import pl.coderslab.WorkoutPlanner.service.DayPlanService;
-import pl.coderslab.WorkoutPlanner.service.TrainingPlanService;
-import pl.coderslab.WorkoutPlanner.service.UserService;
+import pl.coderslab.WorkoutPlanner.service.interfaces.DayPlanService;
+import pl.coderslab.WorkoutPlanner.service.interfaces.TrainingPlanService;
+import pl.coderslab.WorkoutPlanner.service.interfaces.UserService;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 @Controller
 @Transactional

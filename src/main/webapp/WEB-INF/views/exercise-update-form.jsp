@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: Damian Grzybowski
   Date: 21.05.2023
-  Time: 16:20
+  Time: 17:53
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,12 +10,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
-    <title>Create Exercise</title>
-    <link href="/css/form.css" rel="stylesheet" type="text/css">
-    <link href="/css/button.css" rel="stylesheet" type="text/css">
+    <title>Update exercise</title>
 </head>
 <body>
-<form:form method="post" action="/home/exercise" modelAttribute="exercise">
+<form:form method="post" action="/home/exercise/update" modelAttribute="exerciseToUpdate">
+    <form:hidden path="id"/>
 
     <label for="name">Exercise name</label>
     <form:input path="name" id="name"/>
@@ -33,11 +32,9 @@
     <form:input type="Number" path="reps" id="reps"/>
     <form:errors path="reps" cssClass="error"/><br><br>
 
-    <button class="custom-button" type="submit">Create</button>
-
-
+    <button class="custom-button" type="submit">Update</button>
 </form:form>
-<a href="/home" class="custom-button">Back</a>
+<a href="/home/exercises" class="custom-button">Back</a>
 
 
 </body>

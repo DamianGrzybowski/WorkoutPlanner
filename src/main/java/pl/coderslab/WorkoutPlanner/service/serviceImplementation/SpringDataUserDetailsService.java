@@ -1,4 +1,4 @@
-package pl.coderslab.WorkoutPlanner.service;
+package pl.coderslab.WorkoutPlanner.service.serviceImplementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import pl.coderslab.WorkoutPlanner.entity.CurrentUser;
 import pl.coderslab.WorkoutPlanner.entity.User;
+import pl.coderslab.WorkoutPlanner.service.interfaces.UserService;
 
 import java.util.HashSet;
 import java.util.Set;
