@@ -28,9 +28,9 @@
     <c:forEach items="${plans}" var="plan">
         <tr>
             <td>${plan.day}</td>
-            <td><a href="/home/dayplans/details" class="custom-button">Details</a> </td>
-            <td><a href="/home/dayplans/update?id=${plan.id}" class="custom-button1">Update</a> </td>
-            <td><a href="/home/dayplans/delete?id=${plan.id}" class="custom-button2">Delete</a> </td>
+            <td><a href="/home/dayplan/details?id=${plan.id}" class="custom-button">Details</a> </td>
+            <td><a href="/home/dayplan/update?id=${plan.id}" class="custom-button1">Update</a> </td>
+            <td><a href="/home/dayplan/delete?id=${plan.id}" class="custom-button2">Delete</a> </td>
         </tr>
     </c:forEach>
     </tbody>
