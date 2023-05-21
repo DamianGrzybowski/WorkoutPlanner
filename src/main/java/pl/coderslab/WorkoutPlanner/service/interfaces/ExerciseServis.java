@@ -22,4 +22,6 @@ public interface ExerciseServis {
     List<Exercise> findAllByUserId(Long id);
 
     List<Exercise> findAll();
+    List<Exercise> findAllByDayPlanId(Long id);
+
 }

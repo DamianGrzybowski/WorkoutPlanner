@@ -5,10 +5,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.WorkoutPlanner.entity.CurrentUser;
 import pl.coderslab.WorkoutPlanner.entity.DayPlan;
 import pl.coderslab.WorkoutPlanner.entity.Exercise;
@@ -59,5 +56,46 @@ public class DayPlanController {
         dayPlanService.save(dayPlan);
         return "redirect:/home/dayplans";
     }
+
+    @GetMapping("dayplan/details")
+    public String details(@RequestParam("id") Long id, Model model) {
+        DayPlan dayPlan = dayPlanService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid day plan id: " + id));
+        model.addAttribute("dayPlanDetails", dayPlan);
+        List<Exercise> exercises = exerciseServis.findAllByDayPlanId(dayPlan.getId());
+        model.addAttribute("exercises", exercises);
+        return "dayPlan-details";
+    }
+
+    @GetMapping("dayplan/update")
+    public String update(@RequestParam("id") Long id, Model model) {
+        DayPlan dayPlanToUpdate = dayPlanService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid day plan id: " + id));
+        model.addAttribute("dayPlanToUpdate", dayPlanToUpdate);
+        List<Exercise> exercises = exerciseServis.findAll();
+        model.addAttribute("exercises", exercises);
+        List<TrainingPlan> plans = planService.findAll();
+        model.addAttribute("plans", plans);
+        List<String> days = dayPlanService.allDays();
+        model.addAttribute("days", days);
+
+
+        return "dayPlan-update";
+    }
+
+    @PostMapping("dayplan/update")
+    public String update(@ModelAttribute("dayPlanToUpdate") @Valid DayPlan dayPlan, BindingResult result, @AuthenticationPrincipal CurrentUser user) {
+        if (result.hasErrors()) {
+            return "dayPlan-update";
+        }
+        dayPlan.setUser(user.getUser());
+        dayPlanService.update(dayPlan);
+        return "redirect:/home/dayplans";
+    }
+
+    @GetMapping("dayplan/delete")
+    public String delete(@RequestParam("id") Long id) {
+        dayPlanService.delete(id);
+        return "redirect:/home/dayplans";
+    }
+
 
 }

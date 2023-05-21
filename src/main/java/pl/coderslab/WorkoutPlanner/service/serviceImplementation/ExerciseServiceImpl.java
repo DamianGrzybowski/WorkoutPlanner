@@ -61,4 +61,11 @@ public class ExerciseServiceImpl implements ExerciseServis {
     public List<Exercise> findAll() {
         return exerciseRepository.findAll();
     }
+
+    @Override
+    public List<Exercise> findAllByDayPlanId(Long id) {
+        return exerciseRepository.findAllByDayPlanId(id);
+    }
+
+
 }
