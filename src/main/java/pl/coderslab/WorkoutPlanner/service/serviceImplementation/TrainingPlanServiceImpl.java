@@ -9,12 +9,28 @@ import pl.coderslab.WorkoutPlanner.service.interfaces.TrainingPlanService;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
 public class TrainingPlanServiceImpl implements TrainingPlanService {
     private final TrainingPlanRepository planRepository;
+
+    @Override
+    public void save(TrainingPlan trainingPlan) {
+        planRepository.save(trainingPlan);
+    }
+
+    @Override
+    public void update(TrainingPlan trainingPlan) {
+        planRepository.save(trainingPlan);
+    }
+
+    @Override
+    public void delete(Long id) {
+        planRepository.deleteById(id);
+    }
 
     @Override
     public TrainingPlan findByName(String name) {
@@ -29,5 +45,10 @@ public class TrainingPlanServiceImpl implements TrainingPlanService {
     @Override
     public List<TrainingPlan> findAll() {
         return planRepository.findAll();
+    }
+
+    @Override
+    public Optional<TrainingPlan> findById(Long id) {
+        return planRepository.findById(id);
     }
 }

@@ -1,5 +1,6 @@
 package pl.coderslab.WorkoutPlanner.service.interfaces;
 
+import pl.coderslab.WorkoutPlanner.entity.DayPlan;
 import pl.coderslab.WorkoutPlanner.entity.Exercise;
 
 import java.util.List;
@@ -23,5 +24,6 @@ public interface ExerciseServis {
 
     List<Exercise> findAll();
     List<Exercise> findAllByDayPlanId(Long id);
+
 
 }

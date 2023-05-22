@@ -2,6 +2,7 @@ package pl.coderslab.WorkoutPlanner.service.serviceImplementation;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.coderslab.WorkoutPlanner.entity.DayPlan;
 import pl.coderslab.WorkoutPlanner.entity.Exercise;
 import pl.coderslab.WorkoutPlanner.repository.ExerciseRepository;
 import pl.coderslab.WorkoutPlanner.service.interfaces.ExerciseServis;
