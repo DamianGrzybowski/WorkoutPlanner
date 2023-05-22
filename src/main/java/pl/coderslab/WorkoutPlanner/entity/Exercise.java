@@ -47,5 +47,8 @@ public class Exercise {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @ManyToMany(mappedBy = "exercises")
+    private List<DayPlan> dayPlans;
+
 
 }
