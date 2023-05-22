@@ -23,5 +23,8 @@ public interface ExerciseRepository extends JpaRepository<Exercise, Long> {
     @Query("select e from Exercise e left join e.dayPlans d WHERE d.id = ?1")
     List<Exercise> findAllByDayPlanId(Long id);
 
+    @Query("select e from Exercise e left join e.dayPlans d where d= ?1")
+    List<Exercise> findAllByDayPlan(DayPlan dayPlan);
+
 }
 
