@@ -32,8 +32,12 @@ public class DayPlan {
             message = "Please enter correct day name")
     private String day;
 
-    @OneToMany
-    @JoinColumn(name = "day_plan_id")
+    @ManyToMany
+    @JoinTable(
+            name = "day_plan_exercise",
+            joinColumns = @JoinColumn(name = "day_plan_id"),
+            inverseJoinColumns = @JoinColumn(name = "exercise_id")
+    )
     private List<Exercise> exercises;
 
 

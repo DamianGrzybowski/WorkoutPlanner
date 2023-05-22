@@ -1,5 +1,6 @@
 package pl.coderslab.WorkoutPlanner.repository;
 
+import org.hibernate.sql.Select;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -18,7 +19,8 @@ public interface ExerciseRepository extends JpaRepository<Exercise, Long> {
     Exercise findByUserId(Long id);
 
     List<Exercise> findAllByUserId(Long id);
-    @Query(value = "SELECT * FROM exercise WHERE day_plan_id = ?1", nativeQuery = true)
+
+    @Query("select e from Exercise e left join e.dayPlans d WHERE d.id = ?1")
     List<Exercise> findAllByDayPlanId(Long id);
 
 }
