@@ -18,7 +18,6 @@ import java.util.List;
 public class Exercise {
     private static final String NOT_EMPTY_MESSAGE = "The field cannot be empty";
     private static final String SIZE_MESSAGE = "Please enter text between 3 and 30 characters";
-    private static final String LARGER_SIZE_MESSAGE = "Please enter text between 3 and 255 characters";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

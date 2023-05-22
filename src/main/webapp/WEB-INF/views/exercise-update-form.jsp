@@ -11,6 +11,8 @@
 <html>
 <head>
     <title>Update exercise</title>
+    <link href="/css/form.css" rel="stylesheet" type="text/css">
+    <link href="/css/button.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <form:form method="post" action="/home/exercise/update" modelAttribute="exerciseToUpdate">
