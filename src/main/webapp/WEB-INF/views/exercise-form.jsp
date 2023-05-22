@@ -13,32 +13,35 @@
     <title>Create Exercise</title>
     <link href="/css/form.css" rel="stylesheet" type="text/css">
     <link href="/css/button.css" rel="stylesheet" type="text/css">
+    <link href="/css/home.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<form:form method="post" action="/home/exercise" modelAttribute="exercise">
+<%@include file="nav.jsp"%>
+<main>
+    <form:form method="post" action="/home/exercise" modelAttribute="exercise">
 
-    <label for="name">Exercise name</label>
-    <form:input path="name" id="name"/>
-    <form:errors path="name" cssClass="error"/><br>
+        <label for="name">Exercise name</label>
+        <form:input path="name" id="name"/>
+        <form:errors path="name" cssClass="error"/><br>
 
-    <label for="type">Type</label>
-    <form:input path="type" id="type"/>
-    <form:errors path="type" cssClass="error"/><br>
+        <label for="type">Type</label>
+        <form:input path="type" id="type"/>
+        <form:errors path="type" cssClass="error"/><br>
 
-    <label for="sets">Sets</label>
-    <form:input type="Number" path="sets" id="sets"/>
-    <form:errors path="sets" cssClass="error"/><br>
+        <label for="sets">Sets</label>
+        <form:input type="Number" path="sets" id="sets"/>
+        <form:errors path="sets" cssClass="error"/><br>
 
-    <label for="reps">reps</label>
-    <form:input type="Number" path="reps" id="reps"/>
-    <form:errors path="reps" cssClass="error"/><br><br>
+        <label for="reps">reps</label>
+        <form:input type="Number" path="reps" id="reps"/>
+        <form:errors path="reps" cssClass="error"/><br><br>
 
-    <button class="custom-button" type="submit">Create</button>
+        <button class="custom-button" type="submit">Create</button>
 
 
-</form:form>
-<a href="/home" class="custom-button">Back</a>
-
+    </form:form>
+    <a href="/home" class="custom-button">Back</a>
+</main>
 
 </body>
 </html>

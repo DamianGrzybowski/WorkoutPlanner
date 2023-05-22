@@ -12,32 +12,36 @@
     <title>Day plan details</title>
     <link href="/css/table.css" rel="stylesheet" type="text/css">
     <link href="/css/button.css" rel="stylesheet" type="text/css">
+    <link href="/css/home.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
-<h1>${dayPlanDetails.day}</h1>
-<table>
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Reps</th>
-        <th>Sets</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach items="${exercises}" var="exercise">
+<%@include file="nav.jsp" %>
+<main>
+    <h1>${dayPlanDetails.day}</h1>
+    <table>
+        <thead>
         <tr>
-            <td>${exercise.name}</td>
-            <td>${exercise.type}</td>
-            <td>${exercise.reps}</td>
-            <td>${exercise.sets}</td>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Reps</th>
+            <th>Sets</th>
         </tr>
-    </c:forEach>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        <c:forEach items="${exercises}" var="exercise">
+            <tr>
+                <td>${exercise.name}</td>
+                <td>${exercise.type}</td>
+                <td>${exercise.reps}</td>
+                <td>${exercise.sets}</td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
 
-<a href="/home/dayplans" class="custom-button">Back</a>
+    <a href="/home/dayplans" class="custom-button">Back</a>
 
-
+</main>
 </body>
 </html>

@@ -13,38 +13,17 @@
 <html>
 <head>
     <title>Home</title>
+    <link href="/css/home.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <header>
     <div>
-        Hello ${user.username}. Plan Your workout routine with WorkoutPlanner!
+        Hello ${user.username}! Plan Your workout routine with WorkoutPlanner.
     </div>
 </header>
-<nav>
-    <div>
-        <a href="/home/plan">Add new plan</a>
-    </div>
-    <div>
-        <a href="/home/dayplan">Add new day plan</a>
-    </div>
-    <div>
-        <a href="/home/exercise">Add new exercise</a>
-    </div>
-    <div>
-        <a href="/home/plans">All plans</a>
-    </div>
-    <div>
-        <a href="/home/dayplans">All day plans</a>
-    </div>
-    <div>
-        <a href="/home/exercises">All exercises</a>
-    </div>
-    <div>
-        <a href="/logout">Logout</a>
-    </div>
-</nav>
-<main>
+<%@include file="nav.jsp"%>
 
+<main>
 
 
 </main>
