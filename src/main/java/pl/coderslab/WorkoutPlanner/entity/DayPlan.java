@@ -39,9 +39,7 @@ public class DayPlan {
             inverseJoinColumns = @JoinColumn(name = "exercise_id")
     )
     private List<Exercise> exercises;
-//    @OneToMany
-//    @JoinColumn(name = "day_plan_id")
-//    private List<Exercise> exercises;
+
 
     @ManyToOne
     @JoinColumn(name = "training_plan_id")
