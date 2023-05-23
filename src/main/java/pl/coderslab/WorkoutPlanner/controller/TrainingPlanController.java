@@ -26,8 +26,8 @@ public class TrainingPlanController {
 
 
     @GetMapping("plans")
-    public String plans(Model model) {
-        List<TrainingPlan> plans = planService.findAll();
+    public String plans(Model model, @AuthenticationPrincipal CurrentUser user) {
+        List<TrainingPlan> plans = planService.findAllByUser(user.getUser());
         model.addAttribute("plans", plans);
         return "plan-all";
     }

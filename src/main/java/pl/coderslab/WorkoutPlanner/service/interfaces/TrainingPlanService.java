@@ -22,4 +22,7 @@ public interface TrainingPlanService {
 
 
     Optional<TrainingPlan> findById(Long id);
+
+
+    List<TrainingPlan> findAllByUser(User user);
 }
