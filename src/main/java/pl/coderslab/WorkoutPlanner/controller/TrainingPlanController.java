@@ -54,7 +54,7 @@ public class TrainingPlanController {
         model.addAttribute("planDetails", plan);
         List<DayPlan> dayPlans = dayPlanService.findByTrainingPlan(plan);
         model.addAttribute("dayPlans", dayPlans);
-        return "plan-details";
+        return "plan-details1";
     }
 
     @GetMapping("plan/update")
@@ -63,4 +63,5 @@ public class TrainingPlanController {
         model.addAttribute(planToUpdate);
         return "plan-update";
     }
+
 }

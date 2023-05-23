@@ -33,3 +33,9 @@ nav a:hover {
 main {
     padding: 20px;
 }
+
+.logout {
+    position: absolute;
+    right: 0;
+    font-weight: bold;
+}
