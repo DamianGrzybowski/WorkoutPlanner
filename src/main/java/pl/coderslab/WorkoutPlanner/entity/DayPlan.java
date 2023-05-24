@@ -32,7 +32,7 @@ public class DayPlan {
             message = "Please enter correct day name")
     private String day;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(
             name = "day_plan_exercise",
             joinColumns = @JoinColumn(name = "day_plan_id"),

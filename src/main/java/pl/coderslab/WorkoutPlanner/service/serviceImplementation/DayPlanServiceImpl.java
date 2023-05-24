@@ -20,8 +20,8 @@ public class DayPlanServiceImpl implements DayPlanService {
     private final DayPlanRepository dayPlanRepository;
 
     @Override
-    public List<DayPlan> findByTrainingPlan(TrainingPlan trainingPlan) {
-        return dayPlanRepository.findByTrainingPlan(trainingPlan);
+    public List<DayPlan> findByTrainingPlanId(Long id) {
+        return dayPlanRepository.findByTrainingPlanId(id);
     }
 
 

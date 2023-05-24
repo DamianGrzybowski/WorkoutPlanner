@@ -26,8 +26,8 @@ public class TrainingPlanController {
 
 
     @GetMapping("plans")
-    public String plans(Model model) {
-        List<TrainingPlan> plans = planService.findAll();
+    public String plans(Model model, @AuthenticationPrincipal CurrentUser user) {
+        List<TrainingPlan> plans = planService.findAllByUser(user.getUser());
         model.addAttribute("plans", plans);
         return "plan-all";
     }
@@ -52,7 +52,7 @@ public class TrainingPlanController {
     public String details(@RequestParam("id") Long id, Model model) {
         TrainingPlan plan = planService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid plan id: " + id));
         model.addAttribute("planDetails", plan);
-        List<DayPlan> dayPlans = dayPlanService.findByTrainingPlan(plan);
+        List<DayPlan> dayPlans = dayPlanService.findByTrainingPlanId(plan.getId());
         model.addAttribute("dayPlans", dayPlans);
         return "plan-details";
     }
@@ -63,4 +63,35 @@ public class TrainingPlanController {
         model.addAttribute(planToUpdate);
         return "plan-update";
     }
+
+    @GetMapping("plan/name")
+    public String updateName(@RequestParam("id") Long id, Model model) {
+        TrainingPlan planName = planService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid plan id: " + id));
+        model.addAttribute("planName", planName);
+        return "plan-update-name";
+    }
+
+    @PostMapping("plan/name")
+    public String updateName(@ModelAttribute("planName") @Valid TrainingPlan plan, BindingResult result, @AuthenticationPrincipal CurrentUser user) {
+        if (result.hasErrors()) {
+            return "plan-update-name";
+        }
+        plan.setUser(user.getUser());
+        planService.save(plan);
+        return "redirect:/home/plans";
+    }
+
+    @GetMapping("/plan/dayplans")
+    public String readDayPlans(@RequestParam("id") Long id, Model model) {
+        List<DayPlan> dayPlans = dayPlanService.findByTrainingPlanId(id);
+        model.addAttribute("dayPlansByPlan", dayPlans);
+        return "plan-update-dayPlans";
+    }
+
+    @GetMapping("/plan/delete")
+    public String delete(@RequestParam("id") Long id) {
+        planService.delete(id);
+        return "redirect:/home/plans";
+    }
+
 }

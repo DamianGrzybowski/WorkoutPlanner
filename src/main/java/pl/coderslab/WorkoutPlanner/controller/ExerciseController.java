@@ -12,6 +12,7 @@ import pl.coderslab.WorkoutPlanner.service.interfaces.ExerciseServis;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller

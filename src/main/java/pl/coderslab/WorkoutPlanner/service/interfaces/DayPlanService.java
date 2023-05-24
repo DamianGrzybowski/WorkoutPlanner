@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface DayPlanService {
-    List<DayPlan> findByTrainingPlan(TrainingPlan trainingPlan);
+    List<DayPlan> findByTrainingPlanId(Long id);
     DayPlan findByDay(String day);
 
     List<DayPlan> findAllByUser(User user);

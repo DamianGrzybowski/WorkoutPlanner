@@ -13,30 +13,30 @@
 </head>
 <body>
 <nav>
-  <div>
-    <a href="/home">Home</a>
-  </div>
-  <div>
-    <a href="/home/plan">Add new plan</a>
-  </div>
-  <div>
-    <a href="/home/dayplan">Add new day plan</a>
-  </div>
-  <div>
-    <a href="/home/exercise">Add new exercise</a>
-  </div>
-  <div>
-    <a href="/home/plans">All plans</a>
-  </div>
-  <div>
-    <a href="/home/dayplans">All day plans</a>
-  </div>
-  <div>
-    <a href="/home/exercises">All exercises</a>
-  </div>
-  <div>
-    <a href="/logout">Logout</a>
-  </div>
+    <div>
+        <a href="/home">Home</a>
+    </div>
+    <div>
+        <a href="/home/plan">Add new plan</a>
+    </div>
+    <div>
+        <a href="/home/dayplan">Add new day plan</a>
+    </div>
+    <div>
+        <a href="/home/exercise">Add new exercise</a>
+    </div>
+    <div>
+        <a href="/home/plans">All plans</a>
+    </div>
+    <div>
+        <a href="/home/dayplans">All day plans</a>
+    </div>
+    <div>
+        <a href="/home/exercises">All exercises</a>
+    </div>
+    <div class="logout">
+        <a href="/logout">Logout</a>
+    </div>
 </nav>
 
 </body>
