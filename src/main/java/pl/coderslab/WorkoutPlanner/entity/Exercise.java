@@ -7,7 +7,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.transaction.Transactional;
 import javax.validation.constraints.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity

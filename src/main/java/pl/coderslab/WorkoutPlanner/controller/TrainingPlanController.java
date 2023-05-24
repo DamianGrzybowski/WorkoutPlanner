@@ -52,7 +52,7 @@ public class TrainingPlanController {
     public String details(@RequestParam("id") Long id, Model model) {
         TrainingPlan plan = planService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid plan id: " + id));
         model.addAttribute("planDetails", plan);
-        List<DayPlan> dayPlans = dayPlanService.findByTrainingPlan(plan);
+        List<DayPlan> dayPlans = dayPlanService.findByTrainingPlanId(plan.getId());
         model.addAttribute("dayPlans", dayPlans);
         return "plan-details1";
     }
@@ -62,6 +62,23 @@ public class TrainingPlanController {
         TrainingPlan planToUpdate = planService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid plan id: " + id));
         model.addAttribute(planToUpdate);
         return "plan-update";
+    }
+
+    @GetMapping("plan/name")
+    public String updateName(@RequestParam("id") Long id, Model model) {
+        TrainingPlan planName = planService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid plan id: " + id));
+        model.addAttribute("planName", planName);
+        return "plan-update-name";
+    }
+
+    @PostMapping("plan/name")
+    public String updateName(@ModelAttribute("planName") @Valid TrainingPlan plan, BindingResult result, @AuthenticationPrincipal CurrentUser user) {
+        if (result.hasErrors()) {
+            return "plan-update-name";
+        }
+        plan.setUser(user.getUser());
+        planService.save(plan);
+        return "redirect:/home/plans";
     }
 
 }

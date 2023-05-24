@@ -15,7 +15,7 @@ public interface DayPlanRepository extends JpaRepository<DayPlan, Long> {
 
     DayPlan findByDay(String day);
 
-    List<DayPlan> findByTrainingPlan(TrainingPlan trainingPlan);
+    List<DayPlan> findByTrainingPlanId(Long id);
 
     List<DayPlan> findAllByUser(User user);
 
