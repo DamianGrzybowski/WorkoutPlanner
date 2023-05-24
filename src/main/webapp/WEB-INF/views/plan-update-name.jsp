@@ -20,7 +20,7 @@
         <button type="submit" class="custom-button">Update</button>
     </form:form>
 
-    <a href="/home/plans" class="custom-button">Back</a>
+    <a href="/home/plan/update?id=${planName.id}" class="custom-button">Back</a>
 </main>
 
 </body>

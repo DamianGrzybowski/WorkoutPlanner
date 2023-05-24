@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Plan details</title>
-    <link href="/css/table.css" rel="stylesheet" type="text/css">
+    <link href="/css/table1.css" rel="stylesheet" type="text/css">
     <link href="/css/button.css" rel="stylesheet" type="text/css">
     <link href="/css/home.css" rel="stylesheet" type="text/css">
 </head>
@@ -11,28 +11,31 @@
 <%@include file="nav.jsp" %>
 <main>
     <h1>${planDetails.name}</h1>
-    <table>
-        <thead>
-        <tr>
-            <c:forEach items="${dayPlans}" var="day">
+    <c:forEach items="${dayPlans}" var="day">
+        <table>
+            <thead>
+            <tr>
                 <th>${day.day}</th>
+                <th>Exercise</th>
+                <th>Type</th>
+                <th>Sets</th>
+                <th>Reps</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${day.exercises}" var="exercise" varStatus="status">
+                <tr>
+                    <td>${status.index + 1}.</td>
+                    <td>${exercise.name}</td>
+                    <td>${exercise.type}</td>
+                    <td>${exercise.sets}</td>
+                    <td>${exercise.reps}</td>
+                </tr>
             </c:forEach>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <c:forEach items="${dayPlans}" var="plan">
-                <td>
-                    <ol>
-                        <c:forEach items="${plan.exercises}" var="exercise">
-                            <li> ${exercise.name}</li>
-                        </c:forEach>
-                    </ol>
-                </td>
-            </c:forEach>
-        </tr>
-        </tbody>
-    </table>
+
+            </tbody>
+        </table>
+    </c:forEach>
 
 </main>
 <a href="/home/plans" class="custom-button">Back</a>

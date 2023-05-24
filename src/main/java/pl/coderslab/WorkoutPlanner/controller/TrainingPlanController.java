@@ -54,7 +54,7 @@ public class TrainingPlanController {
         model.addAttribute("planDetails", plan);
         List<DayPlan> dayPlans = dayPlanService.findByTrainingPlanId(plan.getId());
         model.addAttribute("dayPlans", dayPlans);
-        return "plan-details1";
+        return "plan-details";
     }
 
     @GetMapping("plan/update")
@@ -78,6 +78,19 @@ public class TrainingPlanController {
         }
         plan.setUser(user.getUser());
         planService.save(plan);
+        return "redirect:/home/plans";
+    }
+
+    @GetMapping("/plan/dayplans")
+    public String readDayPlans(@RequestParam("id") Long id, Model model) {
+        List<DayPlan> dayPlans = dayPlanService.findByTrainingPlanId(id);
+        model.addAttribute("dayPlansByPlan", dayPlans);
+        return "plan-update-dayPlans";
+    }
+
+    @GetMapping("/plan/delete")
+    public String delete(@RequestParam("id") Long id) {
+        planService.delete(id);
         return "redirect:/home/plans";
     }
 
