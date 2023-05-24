@@ -3,8 +3,6 @@ package pl.coderslab.WorkoutPlanner.service.serviceImplementation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.coderslab.WorkoutPlanner.entity.DayPlan;
-import pl.coderslab.WorkoutPlanner.entity.Exercise;
-import pl.coderslab.WorkoutPlanner.entity.TrainingPlan;
 import pl.coderslab.WorkoutPlanner.entity.User;
 import pl.coderslab.WorkoutPlanner.repository.DayPlanRepository;
 import pl.coderslab.WorkoutPlanner.service.interfaces.DayPlanService;
@@ -58,6 +56,11 @@ public class DayPlanServiceImpl implements DayPlanService {
     @Override
     public Optional<DayPlan> findById(Long id) {
         return dayPlanRepository.findById(id);
+    }
+
+    @Override
+    public void deleteAllByTrainingPlanId(Long id) {
+        dayPlanRepository.deleteAllByTrainingPlanId(id);
     }
 
 

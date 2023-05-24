@@ -88,8 +88,22 @@ public class TrainingPlanController {
         return "plan-update-dayPlans";
     }
 
-    @GetMapping("/plan/delete")
+    @GetMapping("/plan/delete/confirm")
+    public String deleteConfirm(@RequestParam("id") Long id, Model model) {
+        TrainingPlan plan = planService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid plan id: " + id));
+        model.addAttribute("planToDelete", plan);
+        return "plan-delete-confirm";
+    }
+
+    @GetMapping("plan/delete")
     public String delete(@RequestParam("id") Long id) {
+        planService.delete(id);
+        return "redirect:/home/plans";
+    }
+
+    @GetMapping("plan/deleteAll")
+    public String deleteAll(@RequestParam("id") Long id) {
+        dayPlanService.deleteAllByTrainingPlanId(id);
         planService.delete(id);
         return "redirect:/home/plans";
     }

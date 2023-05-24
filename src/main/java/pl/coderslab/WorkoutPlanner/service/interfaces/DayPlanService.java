@@ -24,4 +24,6 @@ public interface DayPlanService {
 
     Optional<DayPlan> findById(Long id);
 
+    void deleteAllByTrainingPlanId(Long id);
+
 }
