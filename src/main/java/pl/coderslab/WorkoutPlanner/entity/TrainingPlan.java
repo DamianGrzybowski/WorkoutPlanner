@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.transaction.Transactional;
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,9 @@ public class TrainingPlan {
     @NotBlank(message = NOT_EMPTY_MESSAGE)
     private String name;
 
+    @Column(name = "created_on")
+    private LocalDateTime createdOn;
+
     @ManyToOne
     private User user;
 
@@ -34,5 +38,9 @@ public class TrainingPlan {
     @JoinColumn(name = "training_plan_id")
     private List<DayPlan> dayPlans = new ArrayList<>();
 
+    @PrePersist
+    public void prePersist() {
+        createdOn = LocalDateTime.now();
+    }
 
 }

@@ -56,4 +56,9 @@ public class TrainingPlanServiceImpl implements TrainingPlanService {
     public List<TrainingPlan> findAllByUser(User user) {
         return planRepository.findAllByUser(user);
     }
+
+    @Override
+    public TrainingPlan findLatestPlan(Long id) {
+        return planRepository.findLatestPLan(id);
+    }
 }

@@ -25,4 +25,6 @@ public interface TrainingPlanService {
 
 
     List<TrainingPlan> findAllByUser(User user);
+
+    TrainingPlan findLatestPlan(Long id);
 }
