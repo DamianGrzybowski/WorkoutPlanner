@@ -4,6 +4,7 @@ package pl.coderslab.WorkoutPlanner.service.serviceImplementation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.coderslab.WorkoutPlanner.entity.CurrentUser;
 import pl.coderslab.WorkoutPlanner.entity.Role;
 import pl.coderslab.WorkoutPlanner.entity.User;
 import pl.coderslab.WorkoutPlanner.repository.RoleRepository;
@@ -50,5 +51,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(Long id) {
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public boolean verifyPassword(String password, CurrentUser user) {
+        User userToCompare = userRepository.findByUsername(user.getUsername());
+        return passwordEncoder.matches(password, userToCompare.getPassword());
     }
 }
