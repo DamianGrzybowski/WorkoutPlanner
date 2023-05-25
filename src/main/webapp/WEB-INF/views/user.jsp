@@ -24,7 +24,7 @@
             <td>${user.username}</td>
             <td>${user.email}</td>
             <td><a href="/home/user/confirm_u" class="custom-button1">Update</a></td>
-            <td><a href="/home/user/confirm_d" class="custom-button2">Delete</a></td>
+            <td><a href="/home/user/accept_d" class="custom-button2">Delete</a></td>
         </tr>
         </tbody>
     </table>

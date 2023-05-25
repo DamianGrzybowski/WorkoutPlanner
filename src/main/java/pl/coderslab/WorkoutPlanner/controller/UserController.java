@@ -62,4 +62,33 @@ public class UserController {
         SecurityContextHolder.getContext().getAuthentication().setAuthenticated(false);
         return "redirect:/login";
     }
+
+    @GetMapping("user/accept_d")
+    public String acceptDelete() {
+        return "user-delete-accept";
+    }
+
+    @GetMapping("user/confirm_d")
+    public String confirmDelete(Model model, @AuthenticationPrincipal CurrentUser currentUser) {
+        model.addAttribute("user", currentUser.getUser());
+        return "user-delete-confirm";
+    }
+
+    @PostMapping("user/confirm_d")
+    public String confirmDelete(@ModelAttribute("user") User user, @AuthenticationPrincipal CurrentUser currentUser) {
+        if (userService.verifyPassword(user.getPassword(), currentUser)) {
+            return "redirect:/home/user/delete";
+        }
+        SecurityContextHolder.getContext().getAuthentication().setAuthenticated(false);
+        return "redirect:/login";
+
+    }
+
+    @GetMapping("user/delete")
+    public String delete(@AuthenticationPrincipal CurrentUser currentUser) {
+        User user = currentUser.getUser();
+        userService.delete(user.getId());
+        SecurityContextHolder.getContext().getAuthentication().setAuthenticated(false);
+        return "redirect:/register";
+    }
 }
