@@ -28,10 +28,11 @@ public class HomeController {
         User user = currentUser.getUser();
         model.addAttribute("user", user);
         TrainingPlan latestPlan = planService.findLatestPlan(user.getId());
-        model.addAttribute("planDetails", latestPlan);
-        List<DayPlan> dayPlans = dayPlanService.findByTrainingPlanId(latestPlan.getId());
-        model.addAttribute("dayPlans", dayPlans);
-
+        if (latestPlan != null) {
+            model.addAttribute("planDetails", latestPlan);
+            List<DayPlan> dayPlans = dayPlanService.findByTrainingPlanId(latestPlan.getId());
+            model.addAttribute("dayPlans", dayPlans);
+        }
         return "home";
     }
 

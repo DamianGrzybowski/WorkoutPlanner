@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <html>
@@ -20,33 +19,40 @@
 <%@include file="nav.jsp" %>
 
 <main>
-    <c:if   test="${fn:isNotNull(planDetails)}"></c:if>
-    <h1>Latest plan : ${planDetails.name}</h1>
-    <c:forEach items="${dayPlans}" var="day">
-        <table>
-            <thead>
-            <tr>
-                <th>${day.day}</th>
-                <th>Exercise</th>
-                <th>Type</th>
-                <th>Sets</th>
-                <th>Reps</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${day.exercises}" var="exercise" varStatus="status">
-                <tr>
-                    <td>${status.index + 1}.</td>
-                    <td>${exercise.name}</td>
-                    <td>${exercise.type}</td>
-                    <td>${exercise.sets}</td>
-                    <td>${exercise.reps}</td>
-                </tr>
-            </c:forEach>
+    <c:choose>
+        <c:when test="${planDetails != null}">
+            <h1>Latest plan : ${planDetails.name}</h1>
+            <c:forEach items="${dayPlans}" var="day">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>${day.day}</th>
+                        <th>Exercise</th>
+                        <th>Type</th>
+                        <th>Sets</th>
+                        <th>Reps</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${day.exercises}" var="exercise" varStatus="status">
+                        <tr>
+                            <td>${status.index + 1}.</td>
+                            <td>${exercise.name}</td>
+                            <td>${exercise.type}</td>
+                            <td>${exercise.sets}</td>
+                            <td>${exercise.reps}</td>
+                        </tr>
+                    </c:forEach>
 
-            </tbody>
-        </table>
-    </c:forEach>
+                    </tbody>
+                </table>
+            </c:forEach>
+        </c:when>
+        <c:otherwise>
+            <h1>Latest plan : You don't have any plans yet.</h1>
+        </c:otherwise>
+    </c:choose>
+
 </main>
 
 
