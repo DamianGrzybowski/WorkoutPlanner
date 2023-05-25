@@ -1,5 +1,6 @@
 package pl.coderslab.WorkoutPlanner.service.interfaces;
 
+import pl.coderslab.WorkoutPlanner.entity.CurrentUser;
 import pl.coderslab.WorkoutPlanner.entity.User;
 
 public interface UserService {
@@ -12,4 +13,6 @@ public interface UserService {
     void update(User user);
 
     void delete(Long id);
+
+    boolean verifyPassword(String password, CurrentUser user);
 }

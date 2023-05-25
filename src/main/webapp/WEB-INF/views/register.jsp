@@ -32,14 +32,10 @@
     <button class="custom-button" type="submit">Register</button>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-
-    <div>
-        <a href="/login">Already have an account? Sign in</a>
-    </div>
-
-
-
 </form:form>
+<div>
+    <a href="/login">Already have an account? Sign in</a>
+</div>
 
 </body>
 </html>
