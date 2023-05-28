@@ -8,11 +8,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.WorkoutPlanner.entity.CurrentUser;
 import pl.coderslab.WorkoutPlanner.entity.Exercise;
-import pl.coderslab.WorkoutPlanner.service.interfaces.ExerciseServis;
+import pl.coderslab.WorkoutPlanner.service.interfaces.ExerciseService;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -20,7 +19,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("home")
 public class ExerciseController {
-    private final ExerciseServis exerciseServis;
+    private final ExerciseService exerciseService;
 
 
     @GetMapping("exercise")
@@ -35,21 +34,21 @@ public class ExerciseController {
             return "exercise-form";
         }
         exercise.setUser(user.getUser());
-        exerciseServis.save(exercise);
+        exerciseService.save(exercise);
         return "redirect:/home";
 
     }
 
     @GetMapping("exercises")
     public String exercises(Model model, @AuthenticationPrincipal CurrentUser user) {
-        List<Exercise> list = exerciseServis.findAllByUserId(user.getUser().getId());
+        List<Exercise> list = exerciseService.findAllByUserId(user.getUser().getId());
         model.addAttribute("exercises", list);
         return "exercises-all";
     }
 
     @GetMapping("exercise/update")
     public String update(@RequestParam("id") Long id, Model model) {
-        Exercise exerciseToUpdate = exerciseServis.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid exercise id: " + id));
+        Exercise exerciseToUpdate = exerciseService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid exercise id: " + id));
         model.addAttribute("exerciseToUpdate", exerciseToUpdate);
         return "exercise-update-form";
     }
@@ -60,13 +59,13 @@ public class ExerciseController {
             return "exercise-update-form";
         }
         exercise.setUser(user.getUser());
-        exerciseServis.update(exercise);
+        exerciseService.update(exercise);
         return "redirect:/home/exercises";
     }
 
     @GetMapping("/exercise/delete")
     public String delete(@RequestParam("id") Long id) {
-        exerciseServis.delete(id);
+        exerciseService.delete(id);
         return "redirect:/home/exercises";
     }
 

@@ -29,10 +29,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUsername(name);
     }
 
-    @Override
-    public User findByUserId(Long id) {
-        return userRepository.findById(id).orElseThrow();
-    }
 
     @Override
     public void saveUser(User user) {

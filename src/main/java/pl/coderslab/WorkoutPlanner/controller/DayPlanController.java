@@ -11,7 +11,7 @@ import pl.coderslab.WorkoutPlanner.entity.DayPlan;
 import pl.coderslab.WorkoutPlanner.entity.Exercise;
 import pl.coderslab.WorkoutPlanner.entity.TrainingPlan;
 import pl.coderslab.WorkoutPlanner.service.interfaces.DayPlanService;
-import pl.coderslab.WorkoutPlanner.service.interfaces.ExerciseServis;
+import pl.coderslab.WorkoutPlanner.service.interfaces.ExerciseService;
 import pl.coderslab.WorkoutPlanner.service.interfaces.TrainingPlanService;
 
 import javax.transaction.Transactional;
@@ -24,7 +24,7 @@ import java.util.List;
 @RequestMapping("home")
 public class DayPlanController {
     private final DayPlanService dayPlanService;
-    private final ExerciseServis exerciseServis;
+    private final ExerciseService exerciseService;
     private final TrainingPlanService planService;
 
     @GetMapping("dayplans")
@@ -37,7 +37,7 @@ public class DayPlanController {
     @GetMapping("dayplan")
     public String create(Model model) {
         model.addAttribute("dayPlan", new DayPlan());
-        List<Exercise> exercises = exerciseServis.findAll();
+        List<Exercise> exercises = exerciseService.findAll();
         model.addAttribute("exercises", exercises);
         List<TrainingPlan> plans = planService.findAll();
         model.addAttribute("plans", plans);
@@ -61,7 +61,7 @@ public class DayPlanController {
     public String details(@RequestParam("id") Long id, Model model) {
         DayPlan dayPlan = dayPlanService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid day plan id: " + id));
         model.addAttribute("dayPlanDetails", dayPlan);
-        List<Exercise> exercises = exerciseServis.findAllByDayPlanId(dayPlan.getId());
+        List<Exercise> exercises = exerciseService.findAllByDayPlanId(dayPlan.getId());
         model.addAttribute("exercises", exercises);
         return "dayPlan-details";
     }
@@ -70,7 +70,7 @@ public class DayPlanController {
     public String update(@RequestParam("id") Long id, Model model) {
         DayPlan dayPlanToUpdate = dayPlanService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid day plan id: " + id));
         model.addAttribute("dayPlanToUpdate", dayPlanToUpdate);
-        List<Exercise> exercises = exerciseServis.findAll();
+        List<Exercise> exercises = exerciseService.findAll();
         model.addAttribute("exercises", exercises);
         List<TrainingPlan> plans = planService.findAll();
         model.addAttribute("plans", plans);

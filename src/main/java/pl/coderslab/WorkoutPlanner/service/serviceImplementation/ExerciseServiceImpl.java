@@ -2,10 +2,9 @@ package pl.coderslab.WorkoutPlanner.service.serviceImplementation;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.coderslab.WorkoutPlanner.entity.DayPlan;
 import pl.coderslab.WorkoutPlanner.entity.Exercise;
 import pl.coderslab.WorkoutPlanner.repository.ExerciseRepository;
-import pl.coderslab.WorkoutPlanner.service.interfaces.ExerciseServis;
+import pl.coderslab.WorkoutPlanner.service.interfaces.ExerciseService;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -14,23 +13,9 @@ import java.util.Optional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class ExerciseServiceImpl implements ExerciseServis {
+public class ExerciseServiceImpl implements ExerciseService {
     private final ExerciseRepository exerciseRepository;
 
-    @Override
-    public Exercise findByName(String name) {
-        return exerciseRepository.findByName(name);
-    }
-
-    @Override
-    public Exercise findByType(String type) {
-        return exerciseRepository.findByType(type);
-    }
-
-    @Override
-    public Exercise findByUserId(Long id) {
-        return exerciseRepository.findByUserId(id);
-    }
 
     @Override
     public Optional<Exercise> findById(Long id) {

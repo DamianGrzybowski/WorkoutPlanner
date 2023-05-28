@@ -16,6 +16,6 @@ public interface TrainingPlanRepository extends JpaRepository<TrainingPlan, Long
 
     List<TrainingPlan> findAllByUser(User user);
 
-    @Query("SELECT p FROM TrainingPlan p WHERE (p.createdOn = (SELECT MAX(p2.createdOn) FROM TrainingPlan p2)) AND p.user.id = ?1")
+    @Query("SELECT p FROM TrainingPlan p WHERE p.user.id = ?1 AND(p.createdOn = (SELECT MAX(p2.createdOn) FROM TrainingPlan p2 WHERE p2.user.id = ?1))")
     TrainingPlan findLatestPLan(Long id);
 }

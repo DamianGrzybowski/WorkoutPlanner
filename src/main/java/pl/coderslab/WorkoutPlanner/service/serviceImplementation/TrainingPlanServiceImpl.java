@@ -33,16 +33,6 @@ public class TrainingPlanServiceImpl implements TrainingPlanService {
     }
 
     @Override
-    public TrainingPlan findByName(String name) {
-        return planRepository.findByName(name);
-    }
-
-    @Override
-    public TrainingPlan findByUser(User user) {
-        return planRepository.findByUser(user);
-    }
-
-    @Override
     public List<TrainingPlan> findAll() {
         return planRepository.findAll();
     }

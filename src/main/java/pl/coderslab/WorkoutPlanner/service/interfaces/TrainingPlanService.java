@@ -14,9 +14,6 @@ public interface TrainingPlanService {
 
     void delete(Long id);
 
-    TrainingPlan findByName(String name);
-
-    TrainingPlan findByUser(User user);
 
     List<TrainingPlan> findAll();
 

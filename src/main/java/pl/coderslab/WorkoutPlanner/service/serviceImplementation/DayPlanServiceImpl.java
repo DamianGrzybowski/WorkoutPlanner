@@ -8,8 +8,6 @@ import pl.coderslab.WorkoutPlanner.repository.DayPlanRepository;
 import pl.coderslab.WorkoutPlanner.service.interfaces.DayPlanService;
 
 import javax.transaction.Transactional;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,11 +29,6 @@ public class DayPlanServiceImpl implements DayPlanService {
         return trainingDays;
     }
 
-
-    @Override
-    public DayPlan findByDay(String day) {
-        return dayPlanRepository.findByDay(day);
-    }
 
     @Override
     public List<DayPlan> findAllByUser(User user) {
