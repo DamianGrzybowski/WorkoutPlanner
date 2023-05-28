@@ -8,6 +8,8 @@ import pl.coderslab.WorkoutPlanner.repository.DayPlanRepository;
 import pl.coderslab.WorkoutPlanner.service.interfaces.DayPlanService;
 
 import javax.transaction.Transactional;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +21,14 @@ public class DayPlanServiceImpl implements DayPlanService {
 
     @Override
     public List<DayPlan> findByTrainingPlanId(Long id) {
-        return dayPlanRepository.findByTrainingPlanId(id);
+        List<DayPlan> trainingDays = dayPlanRepository.findByTrainingPlanId(id);
+        trainingDays.sort((day1, day2) -> {
+            List<String> daysOfWeek = allDays();
+            Integer index1 = daysOfWeek.indexOf(day1.getDay());
+            Integer index2 = daysOfWeek.indexOf(day2.getDay());
+            return index1.compareTo(index2);
+        });
+        return trainingDays;
     }
 
 
