@@ -35,7 +35,7 @@ public class ExerciseController {
         }
         exercise.setUser(user.getUser());
         exerciseService.save(exercise);
-        return "redirect:/home";
+        return "redirect:/home/exercises";
 
     }
 
