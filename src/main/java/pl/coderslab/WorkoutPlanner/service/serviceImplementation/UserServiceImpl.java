@@ -57,4 +57,9 @@ public class UserServiceImpl implements UserService {
         User userToCompare = userRepository.findByUsername(user.getUsername());
         return passwordEncoder.matches(password, userToCompare.getPassword());
     }
+
+    @Override
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 }

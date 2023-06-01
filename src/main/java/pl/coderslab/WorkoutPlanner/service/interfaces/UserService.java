@@ -13,4 +13,6 @@ public interface UserService {
     void delete(Long id);
 
     boolean verifyPassword(String password, CurrentUser user);
+
+    User findByEmail(String email);
 }
