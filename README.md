@@ -1,6 +1,6 @@
 # WorkoutPlanner
 
-This is a web-based application developed using Spring Boot, Spring MVC, Spring Data JPA, Spring Security, Hibernate, MySQL, and JSP. The Fitness Training Planner Application allows users to create personalized training plans, perform CRUD operations on exercises, manage workout days, and associate workout days with training plans.
+This is a web-based application developed using Spring Boot, Spring MVC, Spring Data JPA, Spring Security, Hibernate, MySQL, and JSP. The Workout Planner Application allows users to create personalized training plans, perform CRUD operations on exercises, manage workout days, and associate workout days with training plans.
 
 ## Features
 ### User Management:
