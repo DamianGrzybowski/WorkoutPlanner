@@ -25,16 +25,6 @@ public class PasswordResetServiceImpl implements PasswordResetService {
 
     @Override
     public String generateToken() {
-//        int tokenLength = 40;
-//        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-//        StringBuilder tokenBuilder = new StringBuilder();
-//
-//        Random random = new Random();
-//        random.ints(tokenLength, 0, characters.length())
-//                .mapToObj(characters::charAt)
-//                .forEach(tokenBuilder::append);
-//
-//        return tokenBuilder.toString();
         return UUID.randomUUID().toString();
     }
 
