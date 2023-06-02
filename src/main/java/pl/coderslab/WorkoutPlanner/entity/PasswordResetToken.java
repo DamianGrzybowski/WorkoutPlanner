@@ -1,5 +1,6 @@
 package pl.coderslab.WorkoutPlanner.entity;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,13 +9,12 @@ import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 
 @Entity
-@Setter
-@Getter
+@Data
 @Transactional
 @Table(name = "password_token")
 public class PasswordResetToken {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "token", nullable = false)
