@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import pl.coderslab.WorkoutPlanner.entity.PasswordResetToken;
+import pl.coderslab.WorkoutPlanner.entity.EmailToken;
 import pl.coderslab.WorkoutPlanner.entity.User;
-import pl.coderslab.WorkoutPlanner.service.interfaces.PasswordResetService;
+import pl.coderslab.WorkoutPlanner.service.interfaces.EmailTokenService;
 import pl.coderslab.WorkoutPlanner.service.interfaces.UserService;
 import pl.coderslab.WorkoutPlanner.service.serviceImplementation.EmailSenderServiceImpl;
 
@@ -23,7 +23,7 @@ import javax.validation.Valid;
 public class PasswordResetController {
     private final UserService userService;
     private final EmailSenderServiceImpl mailService;
-    private final PasswordResetService passwordResetService;
+    private final EmailTokenService tokenService;
 
     @GetMapping("password_reset")
     public String resetPassword() {
@@ -34,17 +34,17 @@ public class PasswordResetController {
     @PostMapping("password_reset")
     public String resetPasswordForm(@RequestParam("userEmail") String email) throws MessagingException {
         User user = userService.findByEmail(email);
-        if (user == null) {
+        if (user == null || user.getEmailEnabled() == 0) {
             return "reset-password-email";
         }
-        mailService.sendMail(user);
+        mailService.sendResetMail(user);
         return "mailSend";
     }
 
     @GetMapping("reset")
     public String reset(@RequestParam("token") String token, Model model) {
-        PasswordResetToken resetToken = passwordResetService.findByToken(token);
-        if (resetToken == null || passwordResetService.isExpired(resetToken.getExpiryDate())) {
+        EmailToken resetToken = tokenService.findByToken(token);
+        if (resetToken == null || tokenService.isExpired(resetToken.getExpiryDate())) {
             return ResponseEntity.notFound().toString();
         }
         User user = resetToken.getUser();
@@ -59,7 +59,7 @@ public class PasswordResetController {
         }
         if (user.getPassword().equals(user.getConfirmPassword())) {
             userService.update(user);
-            passwordResetService.delete(passwordResetService.findByUser(user));
+            tokenService.delete(tokenService.findByUser(user));
         } else {
             return "password-reset-form";
         }
