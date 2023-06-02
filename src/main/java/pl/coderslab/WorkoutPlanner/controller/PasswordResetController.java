@@ -58,6 +58,7 @@ public class PasswordResetController {
             return "password-reset-form";
         }
         if (user.getPassword().equals(user.getConfirmPassword())) {
+            user.setEmailEnabled(1);
             userService.update(user);
             tokenService.delete(tokenService.findByUser(user));
         } else {

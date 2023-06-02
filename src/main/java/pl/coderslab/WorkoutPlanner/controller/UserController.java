@@ -55,6 +55,7 @@ public class UserController {
             return "user-update";
         }
         if (user.getPassword().equals(user.getConfirmPassword())) {
+            user.setEmailEnabled(1);
             userService.update(user);
         } else {
             return "user-update";
