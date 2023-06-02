@@ -48,6 +48,9 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<TrainingPlan> trainingPlans = new ArrayList<>();
 
+    @Column(name = "is_email_verified")
+    private boolean isEmailVerified;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
